@@ -7,65 +7,59 @@ import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 // Mock data
-const therapists = [
+const patients = [
   {
     id: "1",
-    name: "Dr. Sarah Johnson",
+    name: "Sarah Johnson",
     avatar: "/placeholder.svg?height=80&width=80",
-    specialty: "Cognitive Behavioral Therapy",
-    focus: ["Anxiety", "Depression", "Stress Management"],
-    experience: "15 years",
-    rating: 4.9,
-    reviewCount: 124,
-    nextAvailable: "Tomorrow",
-    bio: "Dr. Johnson specializes in cognitive behavioral therapy with a focus on anxiety and depression. She has extensive experience helping clients develop practical strategies to manage their mental health.",
+    condition: "Anxiety & Depression",
+    concerns: ["Anxiety", "Depression", "Stress Management"],
+    lastVisit: "May 10, 2025",
+    status: "Active",
+    notes:
+      "Sarah has been making good progress with her anxiety management techniques. She reports improved sleep patterns and reduced stress at work.",
   },
   {
     id: "2",
-    name: "Dr. Michael Chen",
+    name: "Michael Chen",
     avatar: "/placeholder.svg?height=80&width=80",
-    specialty: "Psychodynamic Therapy",
-    focus: ["Trauma", "Relationship Issues", "Self-Esteem"],
-    experience: "12 years",
-    rating: 4.8,
-    reviewCount: 98,
-    nextAvailable: "May 18, 2025",
-    bio: "Dr. Chen uses psychodynamic approaches to help clients understand how past experiences influence current behaviors. He specializes in trauma recovery and relationship counseling.",
+    condition: "Post-Traumatic Stress",
+    concerns: ["Trauma", "Relationship Issues", "Self-Esteem"],
+    lastVisit: "May 5, 2025",
+    status: "Active",
+    notes:
+      "Michael continues to work through trauma-related issues. He's shown improvement in applying coping strategies during triggering situations.",
   },
   {
     id: "3",
-    name: "Dr. Emily Rodriguez",
+    name: "Emily Rodriguez",
     avatar: "/placeholder.svg?height=80&width=80",
-    specialty: "Mindfulness-Based Therapy",
-    focus: ["Anxiety", "Stress", "Work-Life Balance"],
-    experience: "8 years",
-    rating: 4.7,
-    reviewCount: 76,
-    nextAvailable: "May 20, 2025",
-    bio: "Dr. Rodriguez integrates mindfulness practices with traditional therapy approaches. She helps clients develop present-moment awareness to reduce stress and anxiety.",
+    condition: "Work-Related Stress",
+    concerns: ["Anxiety", "Stress", "Work-Life Balance"],
+    lastVisit: "April 28, 2025",
+    status: "Inactive",
+    notes:
+      "Emily has been practicing mindfulness techniques to manage workplace stress. She reports better boundaries between work and personal life.",
   },
   {
     id: "4",
-    name: "Dr. James Wilson",
+    name: "James Wilson",
     avatar: "/placeholder.svg?height=80&width=80",
-    specialty: "Solution-Focused Therapy",
-    focus: ["Career Challenges", "Life Transitions", "Goal Setting"],
-    experience: "10 years",
-    rating: 4.6,
-    reviewCount: 89,
-    nextAvailable: "May 17, 2025",
-    bio: "Dr. Wilson specializes in solution-focused approaches that help clients navigate life transitions and career challenges. He focuses on practical strategies for achieving goals.",
+    condition: "Life Transition",
+    concerns: ["Career Challenges", "Life Transitions", "Goal Setting"],
+    lastVisit: "May 12, 2025",
+    status: "Active",
+    notes:
+      "James is navigating a career change and has been working on clarifying his goals and values. He's made progress in developing an action plan.",
   },
 ]
 
-export default function TherapistsPage() {
+export default function PatientsPage() {
   return (
     <div className="container py-6 space-y-8">
       <div className="flex flex-col space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Find a Therapist</h1>
-        <p className="text-muted-foreground">
-          Browse our network of licensed therapists to find the right match for you
-        </p>
+        <h1 className="text-3xl font-bold tracking-tight">Patient List</h1>
+        <p className="text-muted-foreground">Manage and view your current patients</p>
       </div>
 
       <div className="flex flex-col gap-6 md:flex-row">
@@ -73,10 +67,10 @@ export default function TherapistsPage() {
           <Card>
             <CardHeader>
               <CardTitle>Search</CardTitle>
-              <CardDescription>Find therapists by name or specialty</CardDescription>
+              <CardDescription>Find patients by name or condition</CardDescription>
             </CardHeader>
             <CardContent>
-              <Input placeholder="Search therapists..." />
+              <Input placeholder="Search patients..." />
             </CardContent>
           </Card>
 
@@ -87,7 +81,7 @@ export default function TherapistsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <h3 className="text-sm font-medium">Specialties</h3>
+                <h3 className="text-sm font-medium">Conditions</h3>
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
                     <input type="checkbox" id="anxiety" className="h-4 w-4 rounded border-gray-300" />
@@ -123,30 +117,24 @@ export default function TherapistsPage() {
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-sm font-medium">Availability</h3>
+                <h3 className="text-sm font-medium">Status</h3>
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <input type="checkbox" id="today" className="h-4 w-4 rounded border-gray-300" />
-                    <label htmlFor="today" className="text-sm">
-                      Today
+                    <input type="checkbox" id="active" className="h-4 w-4 rounded border-gray-300" />
+                    <label htmlFor="active" className="text-sm">
+                      Active
                     </label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <input type="checkbox" id="this-week" className="h-4 w-4 rounded border-gray-300" />
-                    <label htmlFor="this-week" className="text-sm">
-                      This Week
+                    <input type="checkbox" id="inactive" className="h-4 w-4 rounded border-gray-300" />
+                    <label htmlFor="inactive" className="text-sm">
+                      Inactive
                     </label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <input type="checkbox" id="evenings" className="h-4 w-4 rounded border-gray-300" />
-                    <label htmlFor="evenings" className="text-sm">
-                      Evenings
-                    </label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <input type="checkbox" id="weekends" className="h-4 w-4 rounded border-gray-300" />
-                    <label htmlFor="weekends" className="text-sm">
-                      Weekends
+                    <input type="checkbox" id="new" className="h-4 w-4 rounded border-gray-300" />
+                    <label htmlFor="new" className="text-sm">
+                      New
                     </label>
                   </div>
                 </div>
@@ -161,71 +149,63 @@ export default function TherapistsPage() {
           <Tabs defaultValue="all">
             <div className="flex justify-between items-center mb-4">
               <TabsList>
-                <TabsTrigger value="all">All Therapists</TabsTrigger>
-                <TabsTrigger value="recommended">Recommended</TabsTrigger>
-                <TabsTrigger value="available">Available Today</TabsTrigger>
+                <TabsTrigger value="all">All Patients</TabsTrigger>
+                <TabsTrigger value="active">Active</TabsTrigger>
+                <TabsTrigger value="recent">Recent Visits</TabsTrigger>
               </TabsList>
-              <div className="text-sm text-muted-foreground">Showing {therapists.length} therapists</div>
+              <div className="text-sm text-muted-foreground">Showing {patients.length} patients</div>
             </div>
 
             <TabsContent value="all" className="space-y-6">
-              {therapists.map((therapist) => (
-                <Card key={therapist.id}>
+              {patients.map((patient) => (
+                <Card key={patient.id}>
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row gap-6">
                       <div className="md:w-1/4 flex flex-col items-center text-center">
                         <Avatar className="h-24 w-24 mb-2">
-                          <AvatarImage src={therapist.avatar} alt={therapist.name} />
+                          <AvatarImage src={patient.avatar || "/placeholder.svg"} alt={patient.name} />
                           <AvatarFallback>
-                            {therapist.name
+                            {patient.name
                               .split(" ")
                               .map((n) => n[0])
                               .join("")}
                           </AvatarFallback>
                         </Avatar>
-                        <h3 className="font-medium">{therapist.name}</h3>
-                        <p className="text-sm text-muted-foreground">{therapist.specialty}</p>
-                        <div className="flex items-center justify-center mt-2">
-                          <span className="text-yellow-500 mr-1">★</span>
-                          <span className="font-medium">{therapist.rating}</span>
-                          <span className="text-muted-foreground text-xs ml-1">({therapist.reviewCount})</span>
-                        </div>
+                        <h3 className="font-medium">{patient.name}</h3>
+                        <p className="text-sm text-muted-foreground">{patient.condition}</p>
+                        <Badge className="mt-2" variant={patient.status === "Active" ? "default" : "secondary"}>
+                          {patient.status}
+                        </Badge>
                         <p className="text-sm mt-2">
-                          <span className="font-medium">Experience:</span> {therapist.experience}
+                          <span className="font-medium">Last Visit:</span> {patient.lastVisit}
                         </p>
                       </div>
 
-                      <div className="md:w-2/4 space-y-4">
+                      <div className="md:w-3/4 space-y-4">
                         <div>
-                          <h4 className="font-medium mb-1">About</h4>
-                          <p className="text-sm">{therapist.bio}</p>
+                          <h4 className="font-medium mb-1">Treatment Notes</h4>
+                          <p className="text-sm">{patient.notes}</p>
                         </div>
 
                         <div>
-                          <h4 className="font-medium mb-2">Specializes in</h4>
+                          <h4 className="font-medium mb-2">Primary Concerns</h4>
                           <div className="flex flex-wrap gap-2">
-                            {therapist.focus.map((item) => (
+                            {patient.concerns.map((item) => (
                               <Badge key={item} variant="outline">
                                 {item}
                               </Badge>
                             ))}
                           </div>
                         </div>
-                      </div>
 
-                      <div className="md:w-1/4 flex flex-col space-y-4">
-                        <div className="text-center p-3 bg-primary/10 rounded-lg">
-                          <p className="text-sm font-medium">Next Available</p>
-                          <p className="text-lg font-bold">{therapist.nextAvailable}</p>
+                        <div className="flex space-x-2 pt-2">
+                          <Button size="sm" variant="outline" asChild>
+                            <Link href={`/patient/records/${patient.id}`}>View Records</Link>
+                          </Button>
+                          <Button size="sm" variant="outline" asChild>
+                            <Link href={`/patient/notes/${patient.id}`}>Treatment Notes</Link>
+                          </Button>
                         </div>
-
-                        <Button className="w-full" asChild>
-                          <Link href={`/patient/book/${therapist.id}`}>Book Session</Link>
-                        </Button>
-
-                        <Button variant="outline" className="w-full" asChild>
-                          <Link href={`/patient/therapist/${therapist.id}`}>View Profile</Link>
-                        </Button>
                       </div>
                     </div>
                   </CardContent>
@@ -233,79 +213,116 @@ export default function TherapistsPage() {
               ))}
             </TabsContent>
 
-            <TabsContent value="recommended" className="space-y-6">
-              <Card>
-                <CardContent className="p-6 text-center">
-                  <p className="text-muted-foreground">
-                    Complete your profile to get personalized therapist recommendations
-                  </p>
-                  <Button className="mt-4" asChild>
-                    <Link href="/patient/profile">Complete Profile</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="available" className="space-y-6">
-              {therapists
-                .filter((t) => t.nextAvailable === "Tomorrow")
-                .map((therapist) => (
-                  <Card key={therapist.id}>
+            <TabsContent value="active" className="space-y-6">
+              {patients
+                .filter((p) => p.status === "Active")
+                .map((patient) => (
+                  <Card key={patient.id}>
                     <CardContent className="p-6">
                       <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-1/4 flex flex-col items-center text-center">
                           <Avatar className="h-24 w-24 mb-2">
-                            <AvatarImage src={therapist.avatar} alt={therapist.name} />
+                            <AvatarImage src={patient.avatar || "/placeholder.svg"} alt={patient.name} />
                             <AvatarFallback>
-                              {therapist.name
+                              {patient.name
                                 .split(" ")
                                 .map((n) => n[0])
                                 .join("")}
                             </AvatarFallback>
                           </Avatar>
-                          <h3 className="font-medium">{therapist.name}</h3>
-                          <p className="text-sm text-muted-foreground">{therapist.specialty}</p>
-                          <div className="flex items-center justify-center mt-2">
-                            <span className="text-yellow-500 mr-1">★</span>
-                            <span className="font-medium">{therapist.rating}</span>
-                            <span className="text-muted-foreground text-xs ml-1">({therapist.reviewCount})</span>
-                          </div>
+                          <h3 className="font-medium">{patient.name}</h3>
+                          <p className="text-sm text-muted-foreground">{patient.condition}</p>
+                          <Badge className="mt-2">Active</Badge>
                           <p className="text-sm mt-2">
-                            <span className="font-medium">Experience:</span> {therapist.experience}
+                            <span className="font-medium">Last Visit:</span> {patient.lastVisit}
                           </p>
                         </div>
 
-                        <div className="md:w-2/4 space-y-4">
+                        <div className="md:w-3/4 space-y-4">
                           <div>
-                            <h4 className="font-medium mb-1">About</h4>
-                            <p className="text-sm">{therapist.bio}</p>
+                            <h4 className="font-medium mb-1">Treatment Notes</h4>
+                            <p className="text-sm">{patient.notes}</p>
                           </div>
 
                           <div>
-                            <h4 className="font-medium mb-2">Specializes in</h4>
+                            <h4 className="font-medium mb-2">Primary Concerns</h4>
                             <div className="flex flex-wrap gap-2">
-                              {therapist.focus.map((item) => (
+                              {patient.concerns.map((item) => (
                                 <Badge key={item} variant="outline">
                                   {item}
                                 </Badge>
                               ))}
                             </div>
                           </div>
+
+                          <div className="flex space-x-2 pt-2">
+                            <Button size="sm" variant="outline" asChild>
+                              <Link href={`/patient/records/${patient.id}`}>View Records</Link>
+                            </Button>
+                            <Button size="sm" variant="outline" asChild>
+                              <Link href={`/patient/notes/${patient.id}`}>Treatment Notes</Link>
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+            </TabsContent>
+
+            <TabsContent value="recent" className="space-y-6">
+              {patients
+                .sort((a, b) => new Date(b.lastVisit).getTime() - new Date(a.lastVisit).getTime())
+                .slice(0, 2)
+                .map((patient) => (
+                  <Card key={patient.id}>
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row gap-6">
+                        <div className="md:w-1/4 flex flex-col items-center text-center">
+                          <Avatar className="h-24 w-24 mb-2">
+                            <AvatarImage src={patient.avatar || "/placeholder.svg"} alt={patient.name} />
+                            <AvatarFallback>
+                              {patient.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                            </AvatarFallback>
+                          </Avatar>
+                          <h3 className="font-medium">{patient.name}</h3>
+                          <p className="text-sm text-muted-foreground">{patient.condition}</p>
+                          <Badge className="mt-2" variant={patient.status === "Active" ? "default" : "secondary"}>
+                            {patient.status}
+                          </Badge>
+                          <p className="text-sm mt-2">
+                            <span className="font-medium">Last Visit:</span> {patient.lastVisit}
+                          </p>
                         </div>
 
-                        <div className="md:w-1/4 flex flex-col space-y-4">
-                          <div className="text-center p-3 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300 rounded-lg">
-                            <p className="text-sm font-medium">Available</p>
-                            <p className="text-lg font-bold">Tomorrow</p>
+                        <div className="md:w-3/4 space-y-4">
+                          <div>
+                            <h4 className="font-medium mb-1">Treatment Notes</h4>
+                            <p className="text-sm">{patient.notes}</p>
                           </div>
 
-                          <Button className="w-full" asChild>
-                            <Link href={`/patient/book/${therapist.id}`}>Book Session</Link>
-                          </Button>
+                          <div>
+                            <h4 className="font-medium mb-2">Primary Concerns</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {patient.concerns.map((item) => (
+                                <Badge key={item} variant="outline">
+                                  {item}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
 
-                          <Button variant="outline" className="w-full" asChild>
-                            <Link href={`/patient/therapist/${therapist.id}`}>View Profile</Link>
-                          </Button>
+                          <div className="flex space-x-2 pt-2">
+                            <Button size="sm" variant="outline" asChild>
+                              <Link href={`/patient/records/${patient.id}`}>View Records</Link>
+                            </Button>
+                            <Button size="sm" variant="outline" asChild>
+                              <Link href={`/patient/notes/${patient.id}`}>Treatment Notes</Link>
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </CardContent>

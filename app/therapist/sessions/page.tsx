@@ -122,8 +122,8 @@ export default function PatientSessionsPage() {
   return (
     <div className="container py-6 space-y-8">
       <div className="flex flex-col space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Your Sessions</h1>
-        <p className="text-muted-foreground">View and manage your therapy sessions</p>
+        <h1 className="text-3xl font-bold tracking-tight">Patient Sessions</h1>
+        <p className="text-muted-foreground">View and manage patient therapy sessions</p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
@@ -133,13 +133,13 @@ export default function PatientSessionsPage() {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <CardTitle className="text-xl flex items-center gap-2">
                   <Video className="h-5 w-5 text-blue-600" />
-                  Session History
+                  Patient Session History
                 </CardTitle>
                 <div className="flex items-center gap-2">
                   <div className="relative flex-1">
                     <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input
-                      placeholder="Search sessions..."
+                      placeholder="Search patient sessions..."
                       className="pl-9 h-9 w-full sm:w-[200px]"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
@@ -162,9 +162,9 @@ export default function PatientSessionsPage() {
               </div>
               <Tabs defaultValue="all" onValueChange={setActiveTab}>
                 <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="all">All Sessions</TabsTrigger>
-                  <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
-                  <TabsTrigger value="completed">Completed</TabsTrigger>
+                  <TabsTrigger value="all">All Patient Sessions</TabsTrigger>
+                  <TabsTrigger value="upcoming">Upcoming Sessions</TabsTrigger>
+                  <TabsTrigger value="completed">Completed Sessions</TabsTrigger>
                 </TabsList>
                 <TabsContent value="all" className="pt-4">
                   <div className="space-y-4">
@@ -174,7 +174,10 @@ export default function PatientSessionsPage() {
                         className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
                       >
                         <Avatar className="h-12 w-12">
-                          <AvatarImage src={session.therapist.avatar} alt={session.therapist.name} />
+                          <AvatarImage
+                            src={session.therapist.avatar || "/placeholder.svg"}
+                            alt={session.therapist.name}
+                          />
                           <AvatarFallback>
                             {session.therapist.name
                               .split(" ")
@@ -253,7 +256,10 @@ export default function PatientSessionsPage() {
                           className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
                         >
                           <Avatar className="h-12 w-12">
-                            <AvatarImage src={session.therapist.avatar} alt={session.therapist.name} />
+                            <AvatarImage
+                              src={session.therapist.avatar || "/placeholder.svg"}
+                              alt={session.therapist.name}
+                            />
                             <AvatarFallback>
                               {session.therapist.name
                                 .split(" ")
@@ -302,7 +308,10 @@ export default function PatientSessionsPage() {
                           className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
                         >
                           <Avatar className="h-12 w-12">
-                            <AvatarImage src={session.therapist.avatar} alt={session.therapist.name} />
+                            <AvatarImage
+                              src={session.therapist.avatar || "/placeholder.svg"}
+                              alt={session.therapist.name}
+                            />
                             <AvatarFallback>
                               {session.therapist.name
                                 .split(" ")
@@ -366,9 +375,9 @@ export default function PatientSessionsPage() {
             <CardHeader>
               <CardTitle className="text-xl flex items-center gap-2">
                 <FileText className="h-5 w-5 text-blue-600" />
-                Therapy Progress
+                Patient Therapy Progress
               </CardTitle>
-              <CardDescription>Track your therapy journey</CardDescription>
+              <CardDescription>Track patient therapy journey</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-2">
@@ -423,7 +432,7 @@ export default function PatientSessionsPage() {
           <Card>
             <CardHeader>
               <CardTitle className="text-xl">Quick Actions</CardTitle>
-              <CardDescription>Manage your sessions</CardDescription>
+              <CardDescription>Manage patient sessions</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Button className="w-full" asChild>

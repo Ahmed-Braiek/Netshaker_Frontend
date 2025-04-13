@@ -32,7 +32,7 @@ import { PatientHistory } from "@/components/patient-history"
 import { TherapyNotes } from "@/components/therapy-notes"
 
 const APP_ID = "bbe2e75e364a4ac4b90dfbb535a6ea62"
-const TOKEN = "007eJxTYJh4RWP6OYm1cfsbnT/7bnna781al2ZRPf/07MfRazi+bvRUYEgzN0m2TDNKSja0tDCxTDJNMko0SkkzSkxMNk1JMjazXJ/8M70hkJHhZdZRVkYGCATxWRjSErMzGBgA5ogiOA=="
+const TOKEN = "007eJxTYPDOlVa9G3zn+t2sRebRO1M29RTNmK+3MeYw7/KMR2ILptooMKSZmyRbphklJRtaWphYJpkmGSUapaQZJSYmm6YkGZtZpi79nd4QyMgQw7GPlZEBAkF8Foa0xOwMBgYAgfYgTA=="
 const CHANNEL = "fakh"
 
 const client = new Client()
